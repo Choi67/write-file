@@ -5,7 +5,7 @@ const xlsx = require('xlsx');
 var writeFile = require('./writeFile.js')
 const app = express();
 const http = require('http').Server(app);
-const port = process.env.PORT || 9467;
+const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname));
 
