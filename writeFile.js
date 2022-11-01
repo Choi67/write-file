@@ -1,6 +1,6 @@
 const fs= require ('fs')
 
-async function writeEmailHtml (val,callback) {
+async function writeHtml (list) {
     let header = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n' +
         '<html xmlns="http://www.w3.org/1999/xhtml">\n' +
         '\n' +
@@ -264,14 +264,12 @@ async function writeEmailHtml (val,callback) {
         '</body>\n' +
         '\n' +
         '</html>'
-    for(var i=0; i<val.length; i++){
-        let value = val[i].BRNDS_NM
-        let vList = value.split(',')
+        let vList = list.split(',')
         let data = ''
 
         for(var j=0; j<vList.length; j++){
 
-            if(vList[j] == '삼성'){
+            if(vList[j] == '삼성카드㈜'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t삼성카드\n' +
@@ -283,7 +281,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '현백') {
+            } else if(vList[j] == '현대백화점㈜') {
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t현대<br>백화점카드\n' +
@@ -295,7 +293,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '비씨'){
+            } else if(vList[j] == '비씨카드㈜'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBC카드\n' +
@@ -307,7 +305,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '다음마이원카드'){
+            } else if(vList[j] == '㈜카카오(다음마이원월렛)'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t다음<br>마이원카드\n' +
@@ -319,7 +317,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '하나'){
+            } else if(vList[j] == '하나카드㈜'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t하나카드\n' +
@@ -331,7 +329,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '삼성페이'){
+            } else if(vList[j] == '삼성전자㈜(삼성페이)'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t삼성페이\n' +
@@ -343,7 +341,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '씨티'){
+            } else if(vList[j] == '㈜한국씨티은행'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t씨티카드\n' +
@@ -355,7 +353,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '롯데'){
+            } else if(vList[j] == '롯데카드㈜'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t롯데카드\n' +
@@ -367,7 +365,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '지에스'){
+            } else if(vList[j] == '㈜지에스리테일'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGS팝카드\n' +
@@ -379,7 +377,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '현대'){
+            } else if(vList[j] == '현대카드㈜'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t현대카드\n' +
@@ -392,7 +390,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>   '
-            } else if(vList[j] == '신한'){
+            } else if(vList[j] == '신한카드㈜'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t신한카드\n' +
@@ -404,7 +402,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>  '
-            } else if(vList[j] == '국민'){
+            } else if(vList[j] == '㈜KB국민카드'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t국민카드\n' +
@@ -416,7 +414,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == 'YAP'){
+            } else if(vList[j] == '㈜얍컴퍼니'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tYAP\n' +
@@ -428,7 +426,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '카카오'){
+            } else if(vList[j] == '㈜카카오페이'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t카카오\n' +
@@ -440,7 +438,7 @@ async function writeEmailHtml (val,callback) {
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t해피포인트 적립/사용 등<br>서비스의 제공\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>'
-            } else if(vList[j] == '네이버'){
+            } else if(vList[j] == '네이버파이낸셜 주식회사'){
                 data += '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td style="padding: 15px 20px; text-align: center; border-right: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5;">\n' +
                     '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t네이버페이\n' +
@@ -458,11 +456,41 @@ async function writeEmailHtml (val,callback) {
         let total =header + data + footer
 
         fs.writeFileSync(vList+'.html',total)
+}
+
+async function writeCsv(name,list) {
+    let result = Object.keys(list[0]).join(',') + '\n';
+
+    for (let i = 0; i < list.length; i++) {
+        let stringified = Object.values(list[i]).join(',') + '\n';
+        result += stringified;
+    }
+
+    fs.writeFileSync(name+'.csv',result)
+}
+
+async function makeEmailResouce(val,callback){
+    const list = val.reduce(function (carry, el) {
+        var group = el.BRNDS_NM;
+
+        if (carry[group] === undefined) {
+            carry[group] = []
+        }
+
+        carry[group].push(el)
+        return carry
+    }, {})
+
+    for(var value in list){
+        writeHtml (value)
+        writeCsv(value,list[value])
     }
 
     if (typeof callback === 'function') callback();
 }
 
 module.exports= {
-    writeEmailHtml
+    writeHtml,
+    writeCsv,
+    makeEmailResouce
 }

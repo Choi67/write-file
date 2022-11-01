@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/writeEmailHtml',(req,res)=>{
+app.post('/make-email-resouce',(req,res)=>{
     const form = new multiparty.Form({
         autoFiles: true,
     });
@@ -27,16 +27,16 @@ app.post('/writeEmailHtml',(req,res)=>{
 
         jsonData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
-        writeFile.writeEmailHtml(jsonData,(err)=> {
+        writeFile.makeEmailResouce(jsonData,(err)=> {
             if (err) throw err
-            res.status(200).set("Content-Type", "text/html").send('정상적으로 생성되었습니다.')
+            res.status(200).set("Content-Type", "text/html").send('정상적으로 처리되었습니다.')
         })
 
     });
 
     form.parse(req);
 
-});
+})
 
 http.listen(port, () => {
     console.log(`server running at http://localhost:${port}/`);
